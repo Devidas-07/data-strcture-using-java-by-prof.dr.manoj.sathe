@@ -1,0 +1,54 @@
+package fibonacci;
+
+
+public class FibSearch2 {
+
+	public static void main(String[] args) {
+		int [] a = {1,2,4,5,11,20,25,30,32,410,514,542,623,711,814,910,1010,1112};
+		int n = a.length;
+		System.out.println("n is: "+n);
+		int result =search(a, 13, n);
+		System.out.println("element found at index: "+result);
+	}
+	public static int search(int [] a, int key, int n) {
+		int fib2=0;
+		int fib1=1;
+		int fib=fib2+fib1;
+		while(fib<n) {
+			fib2=fib1;
+			fib1=fib;
+			fib=fib2+fib1;
+		}
+		int offset =-1;
+		System.out.println("fib is: "+fib);
+		
+		while(fib>1) {
+			int index= min(offset+fib2,n-1);
+			
+			if(a[index]<key) {
+				fib=fib1;
+				fib1=fib2;
+				fib2=fib-fib1;
+				offset=index;
+			}
+			else if(a[index]>key) {
+				fib=fib2;
+				fib1=fib1-fib2;
+				fib2=fib-fib1;
+			}
+			else if(a[index]==key){
+				return index;
+			}
+		}
+		return -1;
+	}
+	public static int min(int x, int y) {
+		if(x<y) {
+			return x;
+		}
+		else {
+			return y;
+		}
+	}
+
+}

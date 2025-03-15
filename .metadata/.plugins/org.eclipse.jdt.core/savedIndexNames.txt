@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+C:\FSD24APR\Data Structure Using Java\.metadata\.plugins\org.eclipse.jdt.core
+1288848795.index
+3086198347.index
+1865797976.index
