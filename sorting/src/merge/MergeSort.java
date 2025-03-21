@@ -48,7 +48,8 @@ public class MergeSort {
             }  
             k++;  
         }  
-
+//it may possible that one of array could be not complete
+        //copy the remaining element
         while (i < n1) {  
             arr[k] = L[i];  
             i++;  
