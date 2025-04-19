@@ -10,6 +10,11 @@ public class CreationofLinkedList {
 		l.insertAtFirst(82);
 		l.insetAtLast(99);
 		l.display();
+		//l.removeFirst();
+		l.removeLast();
+		System.out.println("after deleting");
+		l.display();
+		
 	}
 
 }
@@ -44,10 +49,26 @@ public class CreationofLinkedList {
 	 public void insetAtLast(int value) {
 		
 		 Node n1 = new Node(12);
+		 if(head==null) {
+			 
+		 }
 		 tail.ref=n1;
 		 tail=n1;
 		 
 		 size++;
+	 }
+	 public void removeFirst() {
+		head=head.ref;
+	 }
+	 public void removeLast() {
+		 Node secondLast= head;
+		 Node lastNode= head.ref;
+		 
+		 while(lastNode.ref!=null) {
+			 lastNode=lastNode.ref;
+			 secondLast=secondLast.ref;
+		 }
+		 secondLast.ref=null;
 	 }
 	 class Node{
 			int data;
