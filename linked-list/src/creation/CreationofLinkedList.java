@@ -5,6 +5,7 @@ public class CreationofLinkedList {
 	public static void main(String[] args) {
 		
 		Ll l = new Ll(3);
+		
 		l.insertAtFirst(87);
 		l.insertAtFirst(80);
 		l.insertAtFirst(82);

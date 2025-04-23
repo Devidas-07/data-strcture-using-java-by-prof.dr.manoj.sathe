@@ -13,7 +13,7 @@ public class Task1 {
 		ll.insertAtFirst(70);
 		System.out.println("============");
 		//ll.display();
-		ll.insertAtRandom(56, 1);
+		ll.insertAtRandom(56, 5);
 		ll.display();
 	}
 
