@@ -10,6 +10,13 @@ public class DoublyCircularList {
 		dcl.addFirst("of");
 		dcl.addFirst("mca");
 		dcl.display();
+		System.out.println("============");
+		dcl.addLast("last");
+		dcl.addLast("another last1");
+		dcl.addLast("another last2");
+		dcl.addLast("another last3");
+		dcl.addLast("another last4");
+		dcl.display();
 
 	}
 
@@ -58,5 +65,24 @@ class Dcl{
 		}
 		System.out.print(tail.data+" ->");
 		System.out.print(head.data);
+	}
+	public void addLast(String data) {
+		if(head==null) {
+			Node n = new Node(data);
+			head=n;
+			tail=n;
+			n.next=n;
+			n.prev=n;
+			return;
+			
+		}
+		Node n = new Node(data);
+		tail.next=n;
+		n.prev=tail;
+		n.next=head;
+		tail=n;
+	}
+	public void removeFirst() {
+		
 	}
 }

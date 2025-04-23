@@ -4,16 +4,17 @@ public class CreationofLinkedList {
 
 	public static void main(String[] args) {
 		
-		Ll l = new Ll(3);
+		Ll l = new Ll(13);
 		
 		l.insertAtFirst(87);
 		l.insertAtFirst(80);
 		l.insertAtFirst(82);
-		l.insetAtLast(99);
+//		l.insetAtLast(99);
+//		l.insetAtLast(65);
 		l.display();
 		//l.removeFirst();
 		l.removeLast();
-		System.out.println("after deleting");
+		System.out.println("after deleting last");
 		l.display();
 		
 	}
@@ -30,14 +31,18 @@ public class CreationofLinkedList {
 	 
 	 
 	 public void insertAtFirst(int value) {
-		 Node n = new Node(value);
-		 n.ref=head;
-		 head = n;
-		 
-		 if(tail==null) {
-			 tail=head;
+		 if(head==null) {
+			 Node n = new Node(value);
+			 head=n;
+			 head.ref=null;
+			 tail=n;
+			 return;
 		 }
-		 size+=1;
+		 else {
+			 Node n = new Node(value);
+			 n.ref=head;
+			 head=n;
+		 }
 	 }
 	 public void display() {
 		 Node temp=head;
@@ -49,9 +54,12 @@ public class CreationofLinkedList {
 	 
 	 public void insetAtLast(int value) {
 		
-		 Node n1 = new Node(12);
-		 if(head==null) {
-			 
+		 Node n1 = new Node(value);
+		 if(head==null ||tail==null) {
+			 head=n1;
+			 tail=n1;
+			 head.ref=null;
+			 tail.ref=null;
 		 }
 		 tail.ref=n1;
 		 tail=n1;
