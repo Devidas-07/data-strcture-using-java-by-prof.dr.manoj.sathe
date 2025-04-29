@@ -41,12 +41,12 @@ class MyQueue1{
 	int [] queArr= new int[5];
 	int front = -1;
 	int rear = -1;
-	
+	int size=queArr.length;
 	public String enqueue() { 
 		Scanner s = new Scanner(System.in);
 		System.out.println("enter item for queue\t");
 		int item = s.nextInt();
-		if(rear==queArr.length-1) {
+		if((rear + 1) % size == front) {
 			return "queue is full";
 		}
 		else if(front==-1 && rear==-1){
@@ -58,7 +58,7 @@ class MyQueue1{
 			return "element added";
 		}
 		else {
-			rear=rear+1;
+			rear=(rear + 1) % size;
 			queArr[rear]=item;
 			return "element added apart from first index";
 		}

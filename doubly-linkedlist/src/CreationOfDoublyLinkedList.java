@@ -2,7 +2,7 @@
 public class CreationOfDoublyLinkedList {
 
 	public static void main(String[] args) {
-		Dll dll = new Dll(4);
+		Dll dll = new Dll(10);
 		dll.insertAtFirst("Hello");
 		dll.inserAtLast("I");
 		dll.inserAtLast("am");

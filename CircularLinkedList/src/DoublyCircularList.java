@@ -1,9 +1,10 @@
 
+
 public class DoublyCircularList {
 
 	public static void main(String[] args) {
-		Dcl dcl = new Dcl(2);
-		dcl.addFirst("I");
+		Dcl dcl = new Dcl(22);
+		dcl.addFirst("Ihhhh");
 		dcl.addFirst("am");
 		dcl.addFirst("mibs");
 		dcl.addFirst("student");
@@ -17,6 +18,11 @@ public class DoublyCircularList {
 		dcl.addLast("another last3");
 		dcl.addLast("another last4");
 		dcl.display();
+		dcl.removeFirst();
+		dcl.removeFirst();
+		dcl.removeLast();
+		System.out.println();
+dcl.display();
 
 	}
 
@@ -45,27 +51,32 @@ class Dcl{
 			newNode.next=newNode;
 			newNode.prev=newNode;
 			head=newNode;
-			tail=head;
+			tail=newNode;
+			return;
 		}
 		Node newNode= new Node(data);
 		
 		newNode.next=head;
 		newNode.prev=tail;
 		head.prev=newNode;
+		tail.next=newNode;
 		head=newNode;
 	}
+
 	public void display() {
-		Node currNode=head;
-		
-		while(currNode.next!=tail) {
-			System.out.print(currNode.data+" ->");
-			currNode=currNode.next;
-			
-			
-		}
-		System.out.print(tail.data+" ->");
-		System.out.print(head.data);
+	    if (head == null) {
+	        System.out.println("List is empty.");
+	        return;
+	    }
+	    Node currNod = head;
+	    do {
+	        System.out.print(currNod.data + " -> ");
+	        currNod = currNod.next;
+	    } while (currNod != head); // Corrected loop condition
+	    System.out.println(head.data);
 	}
+
+
 	public void addLast(String data) {
 		if(head==null) {
 			Node n = new Node(data);
@@ -81,8 +92,17 @@ class Dcl{
 		n.prev=tail;
 		n.next=head;
 		tail=n;
+		head.prev=tail;
 	}
 	public void removeFirst() {
+		head=head.next;
+		head.prev=tail;
+		tail.next=head;
+	}
+	public void removeLast() {
+		tail=tail.prev;
+		tail.next=head;
+		head.prev=tail;
 		
 	}
 }

@@ -10,7 +10,13 @@ public class SinglyCircularLinkedList {
 		scl.insertAtFirst(78);
 		//scl.display();
 		scl.insertAtLast(3);
+		scl.display(); //78->67->6->4->2->3->78
+		System.out.println();
+		scl.removeFirst();
+		scl.removeLast();
 		scl.display();
+//		scl.removeLast();
+		//scl.display();
 	}
 
 }
@@ -36,18 +42,19 @@ class SclStructure{
 		if(head==null) {
 			head=n;
 			n.next=n;
+			tail=n;
 			return;
 			
 		}
-		Node tail = head;
-		while(tail.next!=head) {
-			tail=tail.next;
-			
-		}
+//		Node tail = head;
+//		while(tail.next!=head) {
+//			tail=tail.next;
+//			
+//		}
 		
 		n.next=head;
 		head=n;
-		tail.next=head;
+		tail.next=n;
 		
 		
 	}
@@ -59,6 +66,8 @@ class SclStructure{
 		}
 		currNod.next=n;
 		n.next=head;
+		tail=n;
+		
 	}
 	public void display() {
 		Node currNod=head;
@@ -66,8 +75,27 @@ class SclStructure{
 		do {
 			System.out.print(currNod.value +"->");
 			currNod=currNod.next;
-		} while (currNod.next!=head);
+		} while (currNod!=head);
 		System.out.print(currNod.value +"->");
 		System.out.print(currNod.next.value +"");
+	}
+	public void removeFirst() {
+		Node currNode= head;
+		while(currNode.next!=head) {
+			currNode=currNode.next;
+		}
+		
+		head=head.next;
+		currNode.next=head;
+	}
+	public void removeLast() {
+		Node secondLast=head;
+		Node last=head.next;
+		
+		while(last.next!=head) {
+			secondLast=last;
+			last=last.next;
+		}
+		secondLast.next=head;
 	}
 }
