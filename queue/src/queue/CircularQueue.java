@@ -1,89 +1,97 @@
-package queue;  
+package queue;
 
-import java.util.Scanner;  
+import java.util.Scanner;
 
-public class CircularQueue {  
+public class CircularQueue {
 
-    public static void main(String[] args) { 
-    	
-        Scanner scan = new Scanner(System.in);  
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
         MyQueue1 qds = new MyQueue1();
 
-        int choice; 
+        int choice;
 
-        do { 
-            System.out.println("enter your choice\t 1. insertion \t 2.view \t 3.delete \t 4.stop");  
-            choice = scan.nextInt();   
+        do {
+            System.out.println("Enter your choice: 1. Insert  2. View  3. Delete  4. Stop");
+            choice = scan.nextInt();
 
-            switch (choice) {  
-                case 1:  
-                    qds.enqueue();  
-                    break;  
-                case 2:  
-                    qds.printQueue();  
-                    break;  
-                case 3:  
-                    qds.dequeue();  
-                    break;  
-                case 4:  
-                    return;  
-                       
-                default:  
-                    System.out.println("Invalid choice. Please enter a number between 1 and 4.");  
-            }  
-        } while (choice != 4);   
+            switch (choice) {
+                case 1:
+                    qds.enqueue(scan);
+                    break;
+                case 2:
+                    qds.printQueue();
+                    break;
+                case 3:
+                    qds.dequeue();
+                    break;
+                case 4:
+                    System.out.println("ok");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter a number between 1 and 4.");
+            }
+        } while (choice != 4);
 
-        scan.close();   
-    }  
-   
-}  
-class MyQueue1{
-	int [] queArr= new int[5];
-	int front = -1;
-	int rear = -1;
-	int size=queArr.length;
-	public String enqueue() { 
-		Scanner s = new Scanner(System.in);
-		System.out.println("enter item for queue\t");
-		int item = s.nextInt();
-		if((rear + 1) % size == front) {
-			return "queue is full";
-		}
-		else if(front==-1 && rear==-1){
-			front =0;
-			rear=0;
-			
-			queArr[front]=item;
-			
-			return "element added";
-		}
-		else {
-			rear=(rear + 1) % size;
-			queArr[rear]=item;
-			return "element added apart from first index";
-		}
-	}
-	public void printQueue() {
-		 if (front == -1 && rear == -1) {
-	            System.out.println("No Elements in QUEUE");
-	        }
-	        else if(front>rear) {
-	            System.out.println("No Elements in QUEUE");
-	        } 
-	        else
-	        {
-	            System.out.println("f is:"+front);
-	            System.out.println("r is:"+rear);
-	            System.out.println("Elements in QUEUE are:");
-	            for (int i = front; i <= rear; i++) {
-	                System.out.println(queArr[i]);
-	            }
-	    }
+        scan.close();
+    }
 
-	}
-	public void dequeue() {
-		
-		front=front+1;
-		printQueue();
-	}
+}
+
+class MyQueue1 {
+    int[] queArr = new int[5];
+    int front = -1;
+    int rear = -1;
+    int size = 0;
+
+    public void enqueue(Scanner s) {
+        if (size == queArr.length) {
+            System.out.println("Queue is full");
+            return;
+        }
+
+        System.out.println("Enter item for queue:");
+        int item = s.nextInt();
+
+        if (front == -1) {
+            front = 0;
+        }
+        
+        rear = (rear + 1) % queArr.length;
+        queArr[rear] = item;
+        size++;
+    }
+
+    public void printQueue() {
+        if (size == 0) {
+            System.out.println("No elements in queue");
+            return;
+        }
+
+//        System.out.println("Front index: " + front);
+//        System.out.println("Rear index: " + rear);
+        System.out.print("Elements in queue: ");
+
+        int i = front;
+        for (int count = 0; count < size; count++) {
+            System.out.print(queArr[i] + " ");
+            i = (i + 1) % queArr.length;
+        }
+        System.out.println();
+    }
+
+    public void dequeue() {
+        if (size == 0) {
+            System.out.println("Queue is empty");
+            return;
+        }
+
+        System.out.println("Front item deleted: " + queArr[front]);
+        front = (front + 1) % queArr.length;
+        size--;
+
+        if (size == 0) {
+            front = -1;
+            rear = -1;
+        }
+    }
 }

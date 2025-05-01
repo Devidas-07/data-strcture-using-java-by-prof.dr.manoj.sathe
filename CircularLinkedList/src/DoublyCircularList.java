@@ -4,25 +4,22 @@ public class DoublyCircularList {
 
 	public static void main(String[] args) {
 		Dcl dcl = new Dcl(22);
-		dcl.addFirst("Ihhhh");
+		dcl.addFirst("I");
 		dcl.addFirst("am");
 		dcl.addFirst("mibs");
 		dcl.addFirst("student");
 		dcl.addFirst("of");
 		dcl.addFirst("mca");
 		dcl.display();
-		System.out.println("============");
+		
 		dcl.addLast("last");
-		dcl.addLast("another last1");
-		dcl.addLast("another last2");
-		dcl.addLast("another last3");
-		dcl.addLast("another last4");
+		
 		dcl.display();
 		dcl.removeFirst();
 		dcl.removeFirst();
 		dcl.removeLast();
 		System.out.println();
-dcl.display();
+		dcl.display();
 
 	}
 
@@ -72,7 +69,7 @@ class Dcl{
 	    do {
 	        System.out.print(currNod.data + " -> ");
 	        currNod = currNod.next;
-	    } while (currNod != head); // Corrected loop condition
+	    } while (currNod != head); 
 	    System.out.println(head.data);
 	}
 
