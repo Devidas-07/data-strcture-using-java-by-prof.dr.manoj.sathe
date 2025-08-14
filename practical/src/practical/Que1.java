@@ -1,16 +1,15 @@
-package queue;
+package practical;
 
 import java.util.Scanner;
 
-public class CreationOfQueue {
-
+public class Que1{
 	public static void main(String[] args) {
-		MyQueue q = new MyQueue();
-		Scanner scan = new Scanner(System.in);
-		
+Scanner scan = new Scanner(System.in);
+		QueueDs q = new QueueDs();
 		
 		while(true) {
 			System.out.println("enter your choice ");
+			System.out.println("1 for enqueue\t 2 for display\t3 for dequeue\t4 for stop");
 			int choice = scan.nextInt();
 			
 			switch (choice) {
@@ -24,16 +23,20 @@ public class CreationOfQueue {
 				q.printQueue();
 				break;
 			}
-			default:
-				//throw new IllegalArgumentException("Unexpected value: " + key);
+			case 3:{
+				q.dequeue();
+				break;
+			}
+			case 4:
+				System.exit(0);
 			}
 		}
 
 	}
-
 }
+class QueueDs{
+																								
 
-class MyQueue{
 	int [] queArr= new int[5];
 	int front = -1;
 	int rear = -1;
@@ -57,11 +60,31 @@ class MyQueue{
 		}
 	}
 	public void printQueue() {
-		for(int i: queArr) {
-			System.out.print(i +" ");
+		if(front==-1 && rear==-1) {
+			System.out.println("queue is empty");
+			return;
+		}
+		else if(front>rear) {
+			System.out.println("queue is empty");
+			return;
+		}
+		for(int i=front; i<=rear; i++) {
+			System.out.print(queArr[i]+" ");
 		}
 	}
 	public void dequeue() {
+		if(front==-1 && rear==-1) {
+			System.out.println("queue is empty");
+			return;
+		}
+		else if(front>rear) {
+			System.out.println("queue is empty");
+			return;
+		}
+		else {
+		front=front+1;
+		System.out.println("item deleted successfully");
+		}
 		
 	}
 }

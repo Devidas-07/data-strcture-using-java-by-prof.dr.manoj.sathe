@@ -28,7 +28,7 @@ public class DeleteNode {
 				break;
 			case 5:
 				int num= s.nextInt();
-				list.deleteRandom(num);
+				//list.deleteRandom(num);
 			}
 		
 		

@@ -2,18 +2,26 @@ package creation;
 
 import java.util.Scanner;
 
-public class CreatingTree {
+
+
+public class Traversing {
 
 	public static void main(String[] args) {
-		BinaryTreeStructure bt = new BinaryTreeStructure();
-		BinaryTreeStructure.Node root=bt.insertRoot();
-		System.out.println(root.value);
+		// TODO Auto-generated method stub
+		Bts bt = new Bts();
+		Bts.Node root=bt.insertRoot();
 		bt.display(root);
+		System.out.println("pre order");
+		bt.preorder(root);
+		System.out.println("in order");
+		bt.inorder(root);
+		System.out.println("post order");
+		bt.postorder(root);
+
 	}
 
 }
-
-class BinaryTreeStructure {
+class Bts {
 
 	Node root;
 
@@ -22,8 +30,8 @@ class BinaryTreeStructure {
 		Node left;
 		Node right;
 
-		public Node(int value) {
-			this.value = value;
+		public Node(int data) {
+			this.value = data;
 
 		}
 
@@ -91,5 +99,30 @@ class BinaryTreeStructure {
 		display(root.right);
 		
 	}
+	public void preorder(Node root) {
+		if(root==null) {
+			return;
+		}
+		System.out.println(root.value);
+		preorder(root.left);
+		preorder(root.right);
+	}
+	public void inorder(Node root) {
+		if(root==null) {
+			return;
+		}
+		inorder(root.left);
+		System.out.println(root.value);
+		inorder(root.right);
+	}
+	public void postorder(Node root) {
+		if(root==null) {
+			return;
+		}
+		postorder(root.left);
+		postorder(root.right);
+		System.out.println(root.value);
+	}
 
 }
+
